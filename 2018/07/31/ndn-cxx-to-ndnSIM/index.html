@@ -12,7 +12,7 @@
 <meta property="og:site_name" content="wawawa.net">
 <meta property="og:description" content="モチベーションndn-cxxで実装したアプリケーションを、ノード数を増やした環境で実験に使いたい→ ndnSIMに移植したい！ 前提条件実験環境 : Ubuntu 17.10 LTS対象読者 : Named Data Networking(NDN)の研究をしている日本人, C++がそこそこに書ける日本人 公式にはなんて書いてあるの？http://ndnsim.net/current/guide-t">
 <meta property="og:locale" content="ja">
-<meta property="og:updated_time" content="2018-07-31T11:21:47.000Z">
+<meta property="og:updated_time" content="2018-07-31T11:26:17.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ndn-cxxで実装したアプリケーションをndnSIMに移植する">
 <meta name="twitter:description" content="モチベーションndn-cxxで実装したアプリケーションを、ノード数を増やした環境で実験に使いたい→ ndnSIMに移植したい！ 前提条件実験環境 : Ubuntu 17.10 LTS対象読者 : Named Data Networking(NDN)の研究をしている日本人, C++がそこそこに書ける日本人 公式にはなんて書いてあるの？http://ndnsim.net/current/guide-t">
@@ -90,7 +90,7 @@
 <p>ndn-cxxで書いたコードは、元々入っているモジュール群と同じように<code>build/ns3/</code>下に置くと<code>scratch/</code>下に置いたシナリオコードで上手くincludeすることが出来る。<br>今回は<code>build/ns3/sampleapps/</code>下にhppファイル群を置いて実行する。</p>
 <h1 id="実行結果"><a href="#実行結果" class="headerlink" title="実行結果"></a>実行結果</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">$ ./build/scratch/ndn-cxx-simple</span><br><span class="line">Sending: /example/testApp/randomData?ndn.MustBeFresh=1&amp;ndn.InterestLifetime=1000</span><br><span class="line">&lt;&lt; I: /example/testApp/randomData?ndn.MustBeFresh=1&amp;ndn.InterestLifetime=1000&amp;ndn.Nonce=2956930911</span><br><span class="line">&gt;&gt; D: Name: /example/testApp/randomData/testApp/%FD%19q</span><br><span class="line">MetaInfo: ContentType: 0, FreshnessPeriod: 10000 milliseconds</span><br><span class="line">Content: (size: 12)</span><br><span class="line">Signature: (type: SignatureSha256WithRsa, value_length: 260)</span><br><span class="line"></span><br><span class="line">Hello!</span><br></pre></td></tr></table></figure>
 <p>無事に実行できた。</p>
-<h1 id="終わりに"><a href="#終わりに" class="headerlink" title="終わりに"></a>終わりに</h1><p>ndnSIMのhelperを使うより、ndn-cxxライクな実装を作って実行した方が柔軟な条件で実験が出来ます。<br>この記事がNDNを研究している日本人研究者の助けになれば幸いです。</p>
+<h1 id="終わりに"><a href="#終わりに" class="headerlink" title="終わりに"></a>終わりに</h1><p>ndnSIMのhelperでは出来ることが非常に限られているので、実験の際にはndn-cxxのコードみたいに書いたhppファイル群を作成して、シナリオコードからincludeすると柔軟な条件で実験が出来たりします。<br>この記事がNDNを研究している日本人研究者の助けになれば幸いです。</p>
 <p>※ 今回書いたコードはこちらからも見れます <a href="https://github.com/wawawanet/ndn-cxx_to_ndnSIM" target="_blank" rel="noopener">https://github.com/wawawanet/ndn-cxx_to_ndnSIM</a></p>
 
     
