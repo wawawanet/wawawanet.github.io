@@ -3,15 +3,19 @@
 <head>
   <meta charset="utf-8">
   
-  <title>wawawa.net</title>
+  <title>ndn-cxxで実装したアプリケーションをndnSIMに移植する | wawawa.net</title>
   <meta name="viewport" content="width=device-width">
-  <meta property="og:type" content="website">
-<meta property="og:title" content="wawawa.net">
-<meta property="og:url" content="https://wawawanet.github.io/index.html">
+  <meta name="description" content="モチベーションndn-cxxで実装したアプリケーションを、ノード数を増やした環境で実験に使いたい→ ndnSIMに移植したい！ 実験環境Ubuntu 17.10 LTS 公式にはなんて書いてあるの？http://ndnsim.net/current/guide-to-simulate-real-apps.htmlこちらにndn-cxxで書いたアプリケーションをndnSIMに移植する際のサンプルコー">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ndn-cxxで実装したアプリケーションをndnSIMに移植する">
+<meta property="og:url" content="https://wawawanet.github.io/2018/07/31/ndn-cxx-to-ndnSIM/index.html">
 <meta property="og:site_name" content="wawawa.net">
+<meta property="og:description" content="モチベーションndn-cxxで実装したアプリケーションを、ノード数を増やした環境で実験に使いたい→ ndnSIMに移植したい！ 実験環境Ubuntu 17.10 LTS 公式にはなんて書いてあるの？http://ndnsim.net/current/guide-to-simulate-real-apps.htmlこちらにndn-cxxで書いたアプリケーションをndnSIMに移植する際のサンプルコー">
 <meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2018-07-31T11:06:41.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="wawawa.net">
+<meta name="twitter:title" content="ndn-cxxで実装したアプリケーションをndnSIMに移植する">
+<meta name="twitter:description" content="モチベーションndn-cxxで実装したアプリケーションを、ノード数を増やした環境で実験に使いたい→ ndnSIMに移植したい！ 実験環境Ubuntu 17.10 LTS 公式にはなんて書いてあるの？http://ndnsim.net/current/guide-to-simulate-real-apps.htmlこちらにndn-cxxで書いたアプリケーションをndnSIMに移植する際のサンプルコー">
   
     <link rel="alternative" href="/atom.xml" title="wawawa.net" type="application/atom+xml">
   
@@ -43,64 +47,7 @@
 	</div>
 </header>
     <div id="main">
-      
-  
-    <article id="post-hello-world" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2018/07/31/hello-world/" class="article-date">
-  <time datetime="2018-07-31T10:57:47.000Z" itemprop="datePublished">2018-07-31</time>
-</a>
-		</span>
-		<span class="meta-elements author">wawawanet</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2018/07/31/hello-world/">Hello World</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-  
-    <article id="post-ndn-cxx-to-ndnSIM" class="post">
+      <article id="post-ndn-cxx-to-ndnSIM" class="post">
 	<footer class="entry-meta-header">
 		<span class="meta-elements date">
 			<a href="/2018/07/31/ndn-cxx-to-ndnSIM/" class="article-date">
@@ -116,8 +63,8 @@
 	<header class="entry-header">
 		
   
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2018/07/31/ndn-cxx-to-ndnSIM/">ndn-cxxで実装したアプリケーションをndnSIMに移植する</a>
+    <h1 class="article-title entry-title" itemprop="name">
+      ndn-cxxで実装したアプリケーションをndnSIMに移植する
     </h1>
   
 
@@ -159,247 +106,35 @@
 		</div>
 	</footer>
 	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-  
-    <article id="post-update-gcc-mac" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2018/07/29/update-gcc-mac/" class="article-date">
-  <time datetime="2018-07-29T11:55:34.000Z" itemprop="datePublished">2018-07-29</time>
-</a>
-		</span>
-		<span class="meta-elements author">wawawanet</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2018/07/29/update-gcc-mac/">Macのgcc, g++をHomebrewを使って最新版にする</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<h1 id="モチベーション"><a href="#モチベーション" class="headerlink" title="モチベーション"></a>モチベーション</h1><p>私はデスクトップはUbuntu、ノートPCはMacを利用しているのですが、<br>全く同じC++のコードを両者で同じようにコンパイルした際に、MacでだけWarningが出たりします。<br>Command Line Toolsで入れたMacのコンパイラがよろしくないのが原因っぽいので、最新版に更新してしまいましょう。</p>
-<h1 id="やること"><a href="#やること" class="headerlink" title="やること"></a>やること</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install gcc</span><br></pre></td></tr></table></figure>
-<p>インストールはこれだけで終わりです。<br>Homebrew経由で入れたパッケージは<code>/usr/local/Celler/</code>に保存され、<code>/usr/local/bin/</code>にコマンドのエイリアスが自動で貼られます。<br><code>/usr/local/bin/</code>からエイリアスを探し当てます</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls /usr/local/bin | grep gcc</span><br><span class="line">$ ls /usr/local/bin | grep g++</span><br></pre></td></tr></table></figure>
-<p>上記コマンドで見つかった<code>gcc-8</code>と<code>g++-8</code>がお目当てのエイリアスです。<br>見つかったエイリアスに対してシンボリックリンクを貼ってあげましょう。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s /usr/local/bin/gcc-8 /usr/local/bin/gcc</span><br><span class="line">$ ln -s /usr/local/bin/g++-8 /usr/local/bin/g++</span><br></pre></td></tr></table></figure>
-<p>最後に<code>~/.bash_profile</code>の良い感じの場所に以下の記述をして、優先順位高めのパスを通したら終了です。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:/usr/local/bin</span><br></pre></td></tr></table></figure>
-<h1 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ gcc -v</span><br><span class="line">Using built-in specs.</span><br><span class="line">COLLECT_GCC=gcc</span><br><span class="line">COLLECT_LTO_WRAPPER=/usr/local/Cellar/gcc/8.2.0/libexec/gcc/x86_64-apple-darwin16.7.0/8.2.0/lto-wrapper</span><br><span class="line">Target: x86_64-apple-darwin16.7.0</span><br><span class="line">Configured with: ../configure --build=x86_64-apple-darwin16.7.0 --prefix=/usr/local/Cellar/gcc/8.2.0 --libdir=/usr/local/Cellar/gcc/8.2.0/lib/gcc/8 --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-8 --with-gmp=/usr/local/opt/gmp --with-mpfr=/usr/local/opt/mpfr --with-mpc=/usr/local/opt/libmpc --with-isl=/usr/local/opt/isl --with-system-zlib --enable-checking=release --with-pkgversion=&apos;Homebrew GCC 8.2.0&apos; --with-bugurl=https://github.com/Homebrew/homebrew-core/issues --disable-nls</span><br><span class="line">Thread model: posix</span><br><span class="line">gcc version 8.2.0 (Homebrew GCC 8.2.0)</span><br><span class="line">$ g++ -v</span><br><span class="line">Using built-in specs.</span><br><span class="line">COLLECT_GCC=g++</span><br><span class="line">COLLECT_LTO_WRAPPER=/usr/local/Cellar/gcc/8.2.0/libexec/gcc/x86_64-apple-darwin16.7.0/8.2.0/lto-wrapper</span><br><span class="line">Target: x86_64-apple-darwin16.7.0</span><br><span class="line">Configured with: ../configure --build=x86_64-apple-darwin16.7.0 --prefix=/usr/local/Cellar/gcc/8.2.0 --libdir=/usr/local/Cellar/gcc/8.2.0/lib/gcc/8 --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-8 --with-gmp=/usr/local/opt/gmp --with-mpfr=/usr/local/opt/mpfr --with-mpc=/usr/local/opt/libmpc --with-isl=/usr/local/opt/isl --with-system-zlib --enable-checking=release --with-pkgversion=&apos;Homebrew GCC 8.2.0&apos; --with-bugurl=https://github.com/Homebrew/homebrew-core/issues --disable-nls</span><br><span class="line">Thread model: posix</span><br><span class="line">gcc version 8.2.0 (Homebrew GCC 8.2.0)</span><br></pre></td></tr></table></figure>
-
     
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
+<nav id="article-nav">
+  
+    <a href="/2018/07/31/hello-world/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Hello World
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/29/update-gcc-mac/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          Macのgcc, g++をHomebrewを使って最新版にする
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
 </article>
 
 
-	<hr class="article-devider">
 
-
-
-  
-    <article id="post-ns3-shellscript" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2018/07/29/ns3-shellscript/" class="article-date">
-  <time datetime="2018-07-29T07:42:29.000Z" itemprop="datePublished">2018-07-29</time>
-</a>
-		</span>
-		<span class="meta-elements author">wawawanet</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2018/07/29/ns3-shellscript/">ns-3構築を爆速で終わらせるためのシェルスクリプト</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<p>ns-3.28をUbuntuに一気に入れてしまいたいのでシェルスクリプトを書いてみた。<br>動作環境 Ubuntu 16.04 or Ubuntu 17.10</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">sudo apt install gcc g++</span><br><span class="line">sudo apt install python python-dev</span><br><span class="line">sudo apt install mercurial python-setuptools git</span><br><span class="line">sudo apt install qt4-dev-tools libqt4-dev</span><br><span class="line">sudo apt install cmake libc6-dev libc6-dev-i386 g++-multilib</span><br><span class="line">sudo apt install gdb valgrind</span><br><span class="line">sudo apt install gsl-bin libgsl2 libgsl-dev</span><br><span class="line">sudo apt install flex bison libfl-dev</span><br><span class="line">sudo apt install tcpdump</span><br><span class="line">sudo apt install sqlite sqlite3 libsqlite3-dev</span><br><span class="line">sudo apt install libxml2 libxml2-dev</span><br><span class="line">sudo apt install libgtk2.0-0 libgtk2.0-dev</span><br><span class="line">sudo apt install vtun lxc</span><br><span class="line">sudo apt install uncrustify</span><br><span class="line">sudo apt install doxygen graphviz imagemagick</span><br><span class="line">sudo apt install texlive texlive-extra-utils texlive-latex-extra texlive-font-utils texlive-lang-portuguese dvipng</span><br><span class="line">sudo apt install python-sphinx dia</span><br><span class="line">sudo apt install python-pygraphviz python-kiwi python-pygoocanvas libgoocanvas-dev ipython</span><br><span class="line">sudo apt install libboost-signals-dev libboost-filesystem-dev</span><br><span class="line">sudo apt install openmpi-bin openmpi-common openmpi-doc libopenmpi-dev</span><br><span class="line">cd ~</span><br><span class="line">wget http://www.nsnam.org/release/ns-allinone-3.28.tar.bz2</span><br><span class="line">tar xjf ns-allinone-3.28.tar.bz2</span><br><span class="line">cd ns-allinone-3.28/ns-3.28</span><br><span class="line">./waf distclean</span><br><span class="line">./waf configure --enable-sudo -d optimized</span><br><span class="line">#enable-sudoはビルドしたものに管理者権限を与えるようにするオプション</span><br><span class="line">#-d optimizedはそのマシン用に最適化するオプション</span><br><span class="line">#サンプルコードもビルドしたければ--enable-exmamples</span><br><span class="line">#テストコードもビルドしたければ--enable-tests</span><br><span class="line">./waf</span><br></pre></td></tr></table></figure>
-<p>適宜編集して使ってください。<br>ちなみにUbuntu18.04ではpython-pygoocanvasを入れることが出来ないので、–vizオプションでPyVizが使えません。トポロジを可視化出来なくても良いならUbuntu18.04でも動かせると思います。</p>
-
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-  
-    <article id="post-boost-timer" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2018/07/29/boost-timer/" class="article-date">
-  <time datetime="2018-07-29T07:41:11.000Z" itemprop="datePublished">2018-07-29</time>
-</a>
-		</span>
-		<span class="meta-elements author">wawawanet</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2018/07/29/boost-timer/">【C++】boost::timerを使おうとしてコンパイルで詰まった話</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<h1 id="はじめに"><a href="#はじめに" class="headerlink" title="はじめに"></a>はじめに</h1><p>諸事情により，C++でタイマー処理を書きたくなった．<br>環境はMacOSであるため，WINAPIなるものを使うことは出来ません．<br>さて，どうしましょう？<br>ということでBoostライブラリを利用したが，コンパイルで詰まったので個人的にメモしておく．<br>(情報・表現の正確性は保証しません)</p>
-<h1 id="Let’s-Boost"><a href="#Let’s-Boost" class="headerlink" title="Let’s Boost!"></a>Let’s Boost!</h1><p>「Boost （ブースト）とは、C++の先駆的な開発者のコミュニティ、およびそのコミュニティによって公開されているオープンソースライブラリのことを指す。」 (Wikipediaより引用)<br>研究でBoostライブラリに依存した某シミュレータを使っている関係上，真っ先にBoostライブラリが思い付いた．<br>調べたらやっぱりタイマー処理が良い感じに出来るみたいなので使っていきましょう．</p>
-<h1 id="Boostのインストール"><a href="#Boostのインストール" class="headerlink" title="Boostのインストール"></a>Boostのインストール</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">brew install boost</span><br></pre></td></tr></table></figure>
-<p>インストールしたらPATHを通さなきゃいけないみたい．<br><code>.bash_profile</code>に以下の内容を追記する．</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:/usr/local/Cellar/boost/1.65.1_1/include</span><br><span class="line">export PATH=$PATH:/usr/local/Cellar/boost/1.65.1_1/lib</span><br></pre></td></tr></table></figure>
-<p>Homebrew使って入れたなら<code>/usr/local/Cellar/boost/</code>あたりに入っていると思うので適宜書き換えてください．<br>見つからなかったら<code>sudo find / -name &#39;*boost*&#39;</code>とでも打って検索すれば良いんじゃないですかね？</p>
-<h1 id="実行してみる"><a href="#実行してみる" class="headerlink" title="実行してみる"></a>実行してみる</h1><p>とりあえず動作確認してみる．<br>コードは <a href="https://boostjp.github.io/tips/timer.html" target="_blank" rel="noopener">https://boostjp.github.io/tips/timer.html</a> から引用しました</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">#include &lt;iostream&gt;</span><br><span class="line">#include &lt;cmath&gt;</span><br><span class="line">#include &lt;boost/timer/timer.hpp&gt;</span><br><span class="line"></span><br><span class="line">int main()</span><br><span class="line">&#123;</span><br><span class="line">    boost::timer::cpu_timer timer; // 時間計測を開始</span><br><span class="line"></span><br><span class="line">    for (long i = 0; i &lt; 100000000; ++i) &#123;</span><br><span class="line">        std::sqrt(123.456L); // 時間のかかる処理</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">    std::string result = timer.format(); // 結果文字列を取得する</span><br><span class="line">    std::cout &lt;&lt; result &lt;&lt; std::endl;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p>実行結果は以下の通り．</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">$ g++ timer.cpp</span><br><span class="line">Undefined symbols for architecture x86_64:</span><br><span class="line">  &quot;boost::timer::auto_cpu_timer::auto_cpu_timer(short)&quot;, referenced from:</span><br><span class="line">      _main in timer-4497dd.o</span><br><span class="line">  &quot;boost::timer::auto_cpu_timer::~auto_cpu_timer()&quot;, referenced from:</span><br><span class="line">      _main in timer-4497dd.o</span><br><span class="line">ld: symbol(s) not found for architecture x86_64</span><br><span class="line">clang: error: linker command failed with exit code 1 (use -v to see invocation</span><br></pre></td></tr></table></figure>
-<p>コンパイルエラーです．困った． (wscriptが予め入っていて<code>./waf</code>でよしなにやってくれる某シミュレータとは勝手が違いますね……)<br>ということで調べてみると，私と同じところで詰まった人がいたみたい．<br><a href="https://stackoverflow.com/questions/10565117/undefined-reference-to-boosttimerauto-cpu-timer" target="_blank" rel="noopener">https://stackoverflow.com/questions/10565117/undefined-reference-to-boosttimerauto-cpu-timer</a></p>
-<p>要するに<code>-lboost_timer</code>って書いてboost_timerへリンクしてあげないといけないみたいです．<br>ということで以下のようにして実行</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ g++ timer.cpp -lboost_timer</span><br><span class="line">$ ./a.out</span><br><span class="line"> 0.323706s wall, 0.320000s user + 0.000000s system = 0.320000s CPU (98.9%)</span><br></pre></td></tr></table></figure>
-<p>ちゃんと動いた．めでたしめでたし．</p>
-<p>Boostで他の機能を使う場合に<code>-lboost_system</code>とか書く場合もあるらしい．<br>あとBoost.Pythonを使うときには<code>-lboost_python</code>とか書く．<br>とりあえずPATH通してても動かなかったら <code>-lboost_&lt;name&gt;</code>みたいなコンパイルオプション調べれば良さそう？</p>
-
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-  
-    <article id="post-how-to-use-hexo" class="post">
-	<footer class="entry-meta-header">
-		<span class="meta-elements date">
-			<a href="/2018/07/29/how-to-use-hexo/" class="article-date">
-  <time datetime="2018-07-29T03:46:20.000Z" itemprop="datePublished">2018-07-29</time>
-</a>
-		</span>
-		<span class="meta-elements author">wawawanet</span>
-		<div class="commentscount">
-			
-		</div>
-	</footer>
-	
-	<header class="entry-header">
-		
-  
-    <h1 itemprop="name" class="entry-title">
-      <a class="article-title" href="/2018/07/29/how-to-use-hexo/">Hexoを使ってブログ作成, Github Pagesにデプロイするまで</a>
-    </h1>
-  
-
-	</header>
-	<div class="entry-content">
-		
-    	<h2 id="モチベーション"><a href="#モチベーション" class="headerlink" title="モチベーション"></a>モチベーション</h2><p>・自分のWebページが欲しいけど、レンタルサーバ代は払いたくない<br>・動的なページである必要性はない<br>→ Github Pagesでいい感じのものを作ってしまえばいいじゃん！<br>という感じ</p>
-<h2 id="どうやって作るか"><a href="#どうやって作るか" class="headerlink" title="どうやって作るか"></a>どうやって作るか</h2><p><a href="https://qiita.com/okmttdhr/items/82ecb0332835472e905f" target="_blank" rel="noopener">https://qiita.com/okmttdhr/items/82ecb0332835472e905f</a><br>にあるように、Github Pagesでブログ構築ができる静的サイトジェネレーターはたくさんあるっぽい。<br>Railsベースのものはなんとなく使いたくないので、ノリでHexoを選んだ。</p>
-<h2 id="制作環境"><a href="#制作環境" class="headerlink" title="制作環境"></a>制作環境</h2><p>MacOS Sierra 10.12.6<br>Homebrewはインストール済</p>
-<h2 id="作っていく"><a href="#作っていく" class="headerlink" title="作っていく"></a>作っていく</h2><h3 id="Github-Pages用のRepository作成"><a href="#Github-Pages用のRepository作成" class="headerlink" title="Github Pages用のRepository作成"></a>Github Pages用のRepository作成</h3><p>Githubにアクセス → 右上の「+」ボタンから「New Repository」を選択<br>Repository Nameは username.github.io にすること！<br>URLがめんどくさくなります。<br>※この記事内でusernameと書かれているところは適宜Githubのユーザ名に置き換えて実行してください。</p>
-<h3 id="Hexoのインストール"><a href="#Hexoのインストール" class="headerlink" title="Hexoのインストール"></a>Hexoのインストール</h3><p>nodebrewとかいうバージョン管理ツール?(RubyのrbenvとかPythonのpyenvみたいな立ち位置のもの)があるらしいのでそれを使っていく<br>Homebrewを使ってnodebrewをインストール</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install nodebrew</span><br></pre></td></tr></table></figure>
-<p>~/.bash_profileに以下の通り追記</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">NODEBREW_HOME=/usr/local/var/nodebrew/current</span><br><span class="line">export NODEBREW_HOME</span><br><span class="line">export NODEBREW_ROOT=/usr/local/var/nodebrew</span><br><span class="line">export PATH=$PATH:$NODEBREW_HOME/bin</span><br></pre></td></tr></table></figure>
-<p>bash起動し直してから、最新のNode.jsをインストール</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">$ nodebrew install-binary latest</span><br><span class="line">$ nodebrew list</span><br><span class="line">v10.7.0</span><br><span class="line"></span><br><span class="line">current: none</span><br><span class="line">$ nodebrew use v10.7.0</span><br><span class="line">$ nodebrew list</span><br><span class="line">v10.7.0</span><br><span class="line"></span><br><span class="line">current: v10.7.0</span><br><span class="line">$ npm -v</span><br><span class="line">6.2.0</span><br></pre></td></tr></table></figure>
-<p>Node.jsが入ったのでHexoとデプロイツールを入れていく</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ npm install hexo</span><br><span class="line">$ npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<h3 id="とりあえず立ち上げてみる"><a href="#とりあえず立ち上げてみる" class="headerlink" title="とりあえず立ち上げてみる"></a>とりあえず立ち上げてみる</h3><p>適当なディレクトリを作ってそこに環境を構築する</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">$ mkdir blog</span><br><span class="line">$ cd blog</span><br><span class="line">$ hexo init</span><br><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>localhost:4000にアクセス出来たらとりあえず成功です。</p>
-<h3 id="configの修正"><a href="#configの修正" class="headerlink" title="configの修正"></a>configの修正</h3><p>以降では<code>hexo init</code>を実行したディレクトリ下で作業する<br>デプロイ先などの設定が_config.ymlにあるので修正する</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"># Site</span><br><span class="line">title: hoge</span><br><span class="line">subtitle: hogefuga</span><br><span class="line">description: </span><br><span class="line">keywords:</span><br><span class="line">author: piyo</span><br><span class="line">language: ja</span><br><span class="line">timezone: Asia/Tokyo</span><br><span class="line"></span><br><span class="line"># URL</span><br><span class="line">## If your site is put in a subdirectory, set url as &apos;http://yoursite.com/child&apos; and root as &apos;/child/&apos;</span><br><span class="line">url: https://username.github.io/</span><br><span class="line">root: /</span><br><span class="line">permalink: :year/:month/:day/:title/</span><br><span class="line">permalink_defaults:</span><br><span class="line"></span><br><span class="line"># Deployment</span><br><span class="line">## Docs: https://hexo.io/docs/deployment.html</span><br><span class="line">deploy:</span><br><span class="line">  type: git</span><br><span class="line">  repo: git@github.com:username/username.github.io.git</span><br><span class="line">  branch: master</span><br></pre></td></tr></table></figure>
-<p>この辺を修正してあげれば良い</p>
-<h3 id="デプロイしてみる"><a href="#デプロイしてみる" class="headerlink" title="デプロイしてみる"></a>デプロイしてみる</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ git init</span><br><span class="line">$ git remote add origin git@github.com:username/username.github.io.git</span><br><span class="line">$ hexo deploy -g</span><br></pre></td></tr></table></figure>
-<p>しばらく待って、<a href="https://username.github.io" target="_blank" rel="noopener">https://username.github.io</a> にアクセス出来たら成功です！<br>お疲れ様でした。</p>
-<h2 id="新しい記事を作る場合"><a href="#新しい記事を作る場合" class="headerlink" title="新しい記事を作る場合"></a>新しい記事を作る場合</h2><p><code>hexo new &lt;記事名&gt;</code>と打てば<code>source/_posts/&lt;記事名&gt;.md</code>というものが生成されるので、生成された&lt;記事名&gt;.mdにMarkdown形式で入力すれば良い。<br>記事が完成したら<code>hexo deploy -g</code>と打てば良い感じにデプロイしてくれます。</p>
-
-    
-	</div>
-	<footer class="entry-footer">
-		<div class="entry-meta-footer">
-			<span class="category">
-				
-			</span>
-			<span class="tags">
-				
-			</span>
-		</div>
-	</footer>
-	
-</article>
-
-
-	<hr class="article-devider">
-
-
-
-  
-  
 
     </div>
     <div class="mb-search">

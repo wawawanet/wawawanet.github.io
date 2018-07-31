@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>Macのgcc, g++をHomebrewを使って最新版にする | wawawa.net</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="モチベーション私はデスクトップはUbuntu、ノートPCはMacを利用しているのですが、全く同じC++のコードを両者で同じようにコンパイルした際に、MacでだけWarningが出たりします。Command Line Toolsで入れたMacのコンパイラがよろしくないのが原因っぽいので、最新版に更新してしまいましょう。 やること1$ brew install gcc インストールはこれだけで終わりで">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Macのgcc, g++をHomebrewを使って最新版にする">
+<meta property="og:url" content="https://wawawanet.github.io/2018/07/29/update-gcc-mac/index.html">
+<meta property="og:site_name" content="wawawa.net">
+<meta property="og:description" content="モチベーション私はデスクトップはUbuntu、ノートPCはMacを利用しているのですが、全く同じC++のコードを両者で同じようにコンパイルした際に、MacでだけWarningが出たりします。Command Line Toolsで入れたMacのコンパイラがよろしくないのが原因っぽいので、最新版に更新してしまいましょう。 やること1$ brew install gcc インストールはこれだけで終わりで">
+<meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2018-07-31T11:03:58.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Macのgcc, g++をHomebrewを使って最新版にする">
+<meta name="twitter:description" content="モチベーション私はデスクトップはUbuntu、ノートPCはMacを利用しているのですが、全く同じC++のコードを両者で同じようにコンパイルした際に、MacでだけWarningが出たりします。Command Line Toolsで入れたMacのコンパイラがよろしくないのが原因っぽいので、最新版に更新してしまいましょう。 やること1$ brew install gcc インストールはこれだけで終わりで">
+  
+    <link rel="alternative" href="/atom.xml" title="wawawa.net" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">wawawa.net</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">Home</a></li><li><a href="/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wawawanet.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-update-gcc-mac" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2018/07/29/update-gcc-mac/" class="article-date">
+  <time datetime="2018-07-29T11:55:34.000Z" itemprop="datePublished">2018-07-29</time>
+</a>
+		</span>
+		<span class="meta-elements author">wawawanet</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      Macのgcc, g++をHomebrewを使って最新版にする
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<h1 id="モチベーション"><a href="#モチベーション" class="headerlink" title="モチベーション"></a>モチベーション</h1><p>私はデスクトップはUbuntu、ノートPCはMacを利用しているのですが、<br>全く同じC++のコードを両者で同じようにコンパイルした際に、MacでだけWarningが出たりします。<br>Command Line Toolsで入れたMacのコンパイラがよろしくないのが原因っぽいので、最新版に更新してしまいましょう。</p>
+<h1 id="やること"><a href="#やること" class="headerlink" title="やること"></a>やること</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ brew install gcc</span><br></pre></td></tr></table></figure>
+<p>インストールはこれだけで終わりです。<br>Homebrew経由で入れたパッケージは<code>/usr/local/Celler/</code>に保存され、<code>/usr/local/bin/</code>にコマンドのエイリアスが自動で貼られます。<br><code>/usr/local/bin/</code>からエイリアスを探し当てます</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ls /usr/local/bin | grep gcc</span><br><span class="line">$ ls /usr/local/bin | grep g++</span><br></pre></td></tr></table></figure>
+<p>上記コマンドで見つかった<code>gcc-8</code>と<code>g++-8</code>がお目当てのエイリアスです。<br>見つかったエイリアスに対してシンボリックリンクを貼ってあげましょう。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ ln -s /usr/local/bin/gcc-8 /usr/local/bin/gcc</span><br><span class="line">$ ln -s /usr/local/bin/g++-8 /usr/local/bin/g++</span><br></pre></td></tr></table></figure>
+<p>最後に<code>~/.bash_profile</code>の良い感じの場所に以下の記述をして、優先順位高めのパスを通したら終了です。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">export PATH=$PATH:/usr/local/bin</span><br></pre></td></tr></table></figure>
+<h1 id="結果"><a href="#結果" class="headerlink" title="結果"></a>結果</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">$ gcc -v</span><br><span class="line">Using built-in specs.</span><br><span class="line">COLLECT_GCC=gcc</span><br><span class="line">COLLECT_LTO_WRAPPER=/usr/local/Cellar/gcc/8.2.0/libexec/gcc/x86_64-apple-darwin16.7.0/8.2.0/lto-wrapper</span><br><span class="line">Target: x86_64-apple-darwin16.7.0</span><br><span class="line">Configured with: ../configure --build=x86_64-apple-darwin16.7.0 --prefix=/usr/local/Cellar/gcc/8.2.0 --libdir=/usr/local/Cellar/gcc/8.2.0/lib/gcc/8 --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-8 --with-gmp=/usr/local/opt/gmp --with-mpfr=/usr/local/opt/mpfr --with-mpc=/usr/local/opt/libmpc --with-isl=/usr/local/opt/isl --with-system-zlib --enable-checking=release --with-pkgversion=&apos;Homebrew GCC 8.2.0&apos; --with-bugurl=https://github.com/Homebrew/homebrew-core/issues --disable-nls</span><br><span class="line">Thread model: posix</span><br><span class="line">gcc version 8.2.0 (Homebrew GCC 8.2.0)</span><br><span class="line">$ g++ -v</span><br><span class="line">Using built-in specs.</span><br><span class="line">COLLECT_GCC=g++</span><br><span class="line">COLLECT_LTO_WRAPPER=/usr/local/Cellar/gcc/8.2.0/libexec/gcc/x86_64-apple-darwin16.7.0/8.2.0/lto-wrapper</span><br><span class="line">Target: x86_64-apple-darwin16.7.0</span><br><span class="line">Configured with: ../configure --build=x86_64-apple-darwin16.7.0 --prefix=/usr/local/Cellar/gcc/8.2.0 --libdir=/usr/local/Cellar/gcc/8.2.0/lib/gcc/8 --enable-languages=c,c++,objc,obj-c++,fortran --program-suffix=-8 --with-gmp=/usr/local/opt/gmp --with-mpfr=/usr/local/opt/mpfr --with-mpc=/usr/local/opt/libmpc --with-isl=/usr/local/opt/isl --with-system-zlib --enable-checking=release --with-pkgversion=&apos;Homebrew GCC 8.2.0&apos; --with-bugurl=https://github.com/Homebrew/homebrew-core/issues --disable-nls</span><br><span class="line">Thread model: posix</span><br><span class="line">gcc version 8.2.0 (Homebrew GCC 8.2.0)</span><br></pre></td></tr></table></figure>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/31/ndn-cxx-to-ndnSIM/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          ndn-cxxで実装したアプリケーションをndnSIMに移植する
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/29/ns3-shellscript/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          ns-3構築を爆速で終わらせるためのシェルスクリプト
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:wawawanet.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">wawawa.net</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2018 wawawanet<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>

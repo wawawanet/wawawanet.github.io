@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>ns-3構築を爆速で終わらせるためのシェルスクリプト | wawawa.net</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="ns-3.28をUbuntuに一気に入れてしまいたいのでシェルスクリプトを書いてみた。動作環境 Ubuntu 16.04 or Ubuntu 17.10 123456789101112131415161718192021222324252627282930313233#!/bin/shsudo apt install gcc g++sudo apt install python python-de">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ns-3構築を爆速で終わらせるためのシェルスクリプト">
+<meta property="og:url" content="https://wawawanet.github.io/2018/07/29/ns3-shellscript/index.html">
+<meta property="og:site_name" content="wawawa.net">
+<meta property="og:description" content="ns-3.28をUbuntuに一気に入れてしまいたいのでシェルスクリプトを書いてみた。動作環境 Ubuntu 16.04 or Ubuntu 17.10 123456789101112131415161718192021222324252627282930313233#!/bin/shsudo apt install gcc g++sudo apt install python python-de">
+<meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2018-07-31T11:04:00.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ns-3構築を爆速で終わらせるためのシェルスクリプト">
+<meta name="twitter:description" content="ns-3.28をUbuntuに一気に入れてしまいたいのでシェルスクリプトを書いてみた。動作環境 Ubuntu 16.04 or Ubuntu 17.10 123456789101112131415161718192021222324252627282930313233#!/bin/shsudo apt install gcc g++sudo apt install python python-de">
+  
+    <link rel="alternative" href="/atom.xml" title="wawawa.net" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">wawawa.net</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">Home</a></li><li><a href="/archives">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wawawanet.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-ns3-shellscript" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2018/07/29/ns3-shellscript/" class="article-date">
+  <time datetime="2018-07-29T07:42:29.000Z" itemprop="datePublished">2018-07-29</time>
+</a>
+		</span>
+		<span class="meta-elements author">wawawanet</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      ns-3構築を爆速で終わらせるためのシェルスクリプト
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>ns-3.28をUbuntuに一気に入れてしまいたいのでシェルスクリプトを書いてみた。<br>動作環境 Ubuntu 16.04 or Ubuntu 17.10</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line">#!/bin/sh</span><br><span class="line"></span><br><span class="line">sudo apt install gcc g++</span><br><span class="line">sudo apt install python python-dev</span><br><span class="line">sudo apt install mercurial python-setuptools git</span><br><span class="line">sudo apt install qt4-dev-tools libqt4-dev</span><br><span class="line">sudo apt install cmake libc6-dev libc6-dev-i386 g++-multilib</span><br><span class="line">sudo apt install gdb valgrind</span><br><span class="line">sudo apt install gsl-bin libgsl2 libgsl-dev</span><br><span class="line">sudo apt install flex bison libfl-dev</span><br><span class="line">sudo apt install tcpdump</span><br><span class="line">sudo apt install sqlite sqlite3 libsqlite3-dev</span><br><span class="line">sudo apt install libxml2 libxml2-dev</span><br><span class="line">sudo apt install libgtk2.0-0 libgtk2.0-dev</span><br><span class="line">sudo apt install vtun lxc</span><br><span class="line">sudo apt install uncrustify</span><br><span class="line">sudo apt install doxygen graphviz imagemagick</span><br><span class="line">sudo apt install texlive texlive-extra-utils texlive-latex-extra texlive-font-utils texlive-lang-portuguese dvipng</span><br><span class="line">sudo apt install python-sphinx dia</span><br><span class="line">sudo apt install python-pygraphviz python-kiwi python-pygoocanvas libgoocanvas-dev ipython</span><br><span class="line">sudo apt install libboost-signals-dev libboost-filesystem-dev</span><br><span class="line">sudo apt install openmpi-bin openmpi-common openmpi-doc libopenmpi-dev</span><br><span class="line">cd ~</span><br><span class="line">wget http://www.nsnam.org/release/ns-allinone-3.28.tar.bz2</span><br><span class="line">tar xjf ns-allinone-3.28.tar.bz2</span><br><span class="line">cd ns-allinone-3.28/ns-3.28</span><br><span class="line">./waf distclean</span><br><span class="line">./waf configure --enable-sudo -d optimized</span><br><span class="line">#enable-sudoはビルドしたものに管理者権限を与えるようにするオプション</span><br><span class="line">#-d optimizedはそのマシン用に最適化するオプション</span><br><span class="line">#サンプルコードもビルドしたければ--enable-exmamples</span><br><span class="line">#テストコードもビルドしたければ--enable-tests</span><br><span class="line">./waf</span><br></pre></td></tr></table></figure>
+<p>適宜編集して使ってください。<br>ちなみにUbuntu18.04ではpython-pygoocanvasを入れることが出来ないので、–vizオプションでPyVizが使えません。トポロジを可視化出来なくても良いならUbuntu18.04でも動かせると思います。</p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+    <a href="/2018/07/29/update-gcc-mac/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          Macのgcc, g++をHomebrewを使って最新版にする
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2018/07/29/boost-timer/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          【C++】boost::timerを使おうとしてコンパイルで詰まった話
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:wawawanet.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">wawawa.net</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2018 wawawanet<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>
