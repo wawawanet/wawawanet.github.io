@@ -2,7 +2,6 @@
 <html>
 <head>
   <meta charset="utf-8">
-  <meta name="google-site-verification" content="rNubqHng1Y3Bwve7u8TSJs_mh8JP3zEZy5FUnAH11oM" />
   
   <title>wawawa.net</title>
   <meta name="viewport" content="width=device-width">
@@ -45,6 +44,55 @@
 </header>
     <div id="main">
       
+  
+    <article id="post-ndn-cxx-exection" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2018/08/03/ndn-cxx-exection/" class="article-date">
+  <time datetime="2018-08-02T18:00:05.000Z" itemprop="datePublished">2018-08-03</time>
+</a>
+		</span>
+		<span class="meta-elements author">wawawanet</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 itemprop="name" class="entry-title">
+      <a class="article-title" href="/2018/08/03/ndn-cxx-exection/">ndn-cxxの実行ファイルの置き場所が変わってた件</a>
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<p>例えば、ndn-cxxを利用して書いた<code>hoge.cpp</code>というファイルをコンパイルして実行する場合、<code>hoge.cpp</code>を<code>examples/</code>下に置いて<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ./waf configure --with-examples #以前configureしてある方は省略</span><br><span class="line">$ ./waf</span><br><span class="line">$ ./build/exsample/hoge</span><br></pre></td></tr></table></figure></p>
+<p>として実行していたものが、更新したら実行出来なくなっていて、<br>色々探した結果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./examples/hoge</span><br></pre></td></tr></table></figure></p>
+<p>とやって実行するように仕様が変更されていた……<br>せめてREADMEには書いておいてくれよ…..</p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+</article>
+
+
+	<hr class="article-devider">
+
+
+
   
     <article id="post-ndn-cxx-to-ndnSIM" class="post">
 	<footer class="entry-meta-header">
