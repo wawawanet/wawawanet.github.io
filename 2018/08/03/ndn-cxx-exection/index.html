@@ -5,17 +5,17 @@
   
   <title>ndn-cxxの実行ファイルの置き場所が変わってた件 | wawawa.net</title>
   <meta name="viewport" content="width=device-width">
-  <meta name="description" content="例えば、ndn-cxxを利用して書いたhoge.cppというファイルをコンパイルして実行する場合、hoge.cppをexamples/下に置いて123$ ./waf configure --with-examples #以前configureしてある方は省略$ ./waf$ ./build/exsample/hoge として実行していたものが、更新したら実行出来なくなっていて、色々探した結果1$">
+  <meta name="description" content="例えば、ndn-cxxを利用して書いたhoge.cppというファイルをコンパイルして実行する場合、hoge.cppをexamples/下に置いて123$ ./waf configure --with-examples #以前configureしてある方は省略$ ./waf$ ./build/exsamples/hoge として実行していたものが、更新したら実行出来なくなっていて、色々探した結果1$">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ndn-cxxの実行ファイルの置き場所が変わってた件">
 <meta property="og:url" content="https://wawawanet.github.io/2018/08/03/ndn-cxx-exection/index.html">
 <meta property="og:site_name" content="wawawa.net">
-<meta property="og:description" content="例えば、ndn-cxxを利用して書いたhoge.cppというファイルをコンパイルして実行する場合、hoge.cppをexamples/下に置いて123$ ./waf configure --with-examples #以前configureしてある方は省略$ ./waf$ ./build/exsample/hoge として実行していたものが、更新したら実行出来なくなっていて、色々探した結果1$">
+<meta property="og:description" content="例えば、ndn-cxxを利用して書いたhoge.cppというファイルをコンパイルして実行する場合、hoge.cppをexamples/下に置いて123$ ./waf configure --with-examples #以前configureしてある方は省略$ ./waf$ ./build/exsamples/hoge として実行していたものが、更新したら実行出来なくなっていて、色々探した結果1$">
 <meta property="og:locale" content="ja">
-<meta property="og:updated_time" content="2018-08-02T18:05:27.000Z">
+<meta property="og:updated_time" content="2018-08-02T18:07:41.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ndn-cxxの実行ファイルの置き場所が変わってた件">
-<meta name="twitter:description" content="例えば、ndn-cxxを利用して書いたhoge.cppというファイルをコンパイルして実行する場合、hoge.cppをexamples/下に置いて123$ ./waf configure --with-examples #以前configureしてある方は省略$ ./waf$ ./build/exsample/hoge として実行していたものが、更新したら実行出来なくなっていて、色々探した結果1$">
+<meta name="twitter:description" content="例えば、ndn-cxxを利用して書いたhoge.cppというファイルをコンパイルして実行する場合、hoge.cppをexamples/下に置いて123$ ./waf configure --with-examples #以前configureしてある方は省略$ ./waf$ ./build/exsamples/hoge として実行していたものが、更新したら実行出来なくなっていて、色々探した結果1$">
   
     <link rel="alternative" href="/atom.xml" title="wawawa.net" type="application/atom+xml">
   
@@ -71,7 +71,7 @@
 	</header>
 	<div class="entry-content">
 		
-    	<p>例えば、ndn-cxxを利用して書いた<code>hoge.cpp</code>というファイルをコンパイルして実行する場合、<code>hoge.cpp</code>を<code>examples/</code>下に置いて<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ./waf configure --with-examples #以前configureしてある方は省略</span><br><span class="line">$ ./waf</span><br><span class="line">$ ./build/exsample/hoge</span><br></pre></td></tr></table></figure></p>
+    	<p>例えば、ndn-cxxを利用して書いた<code>hoge.cpp</code>というファイルをコンパイルして実行する場合、<code>hoge.cpp</code>を<code>examples/</code>下に置いて<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">$ ./waf configure --with-examples #以前configureしてある方は省略</span><br><span class="line">$ ./waf</span><br><span class="line">$ ./build/exsamples/hoge</span><br></pre></td></tr></table></figure></p>
 <p>として実行していたものが、更新したら実行出来なくなっていて、<br>色々探した結果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ ./examples/hoge</span><br></pre></td></tr></table></figure></p>
 <p>とやって実行するように仕様が変更されていた……<br>せめてREADMEには書いておいてくれよ…..</p>
 
