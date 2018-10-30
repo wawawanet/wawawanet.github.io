@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <title>【ndnSIM】Interest・DataパケットをIPのパケットに詰め込んでから元に戻す方法 | wawawa.net</title>
+  <meta name="viewport" content="width=device-width">
+  <meta name="description" content="モチベーションInformation Centric Networking(ICN)のシミュレーションで、ルーティング周りの処理を弄ってトラフィック量の計測がしたい。一番研究が盛んなNDNをベースにして、ちゃんとInterest &amp;amp; Dataパケットは使いたいし、ndnSIM または ndn-cxx + NFD で実装したい。しかし、ndnSIMにしろNFDにしろ、ルーティング周りを弄ろう">
+<meta property="og:type" content="article">
+<meta property="og:title" content="【ndnSIM】Interest・DataパケットをIPのパケットに詰め込んでから元に戻す方法">
+<meta property="og:url" content="https://wawawanet.github.io/2018/10/30/ndn-in-ippacket/index.html">
+<meta property="og:site_name" content="wawawa.net">
+<meta property="og:description" content="モチベーションInformation Centric Networking(ICN)のシミュレーションで、ルーティング周りの処理を弄ってトラフィック量の計測がしたい。一番研究が盛んなNDNをベースにして、ちゃんとInterest &amp;amp; Dataパケットは使いたいし、ndnSIM または ndn-cxx + NFD で実装したい。しかし、ndnSIMにしろNFDにしろ、ルーティング周りを弄ろう">
+<meta property="og:locale" content="ja">
+<meta property="og:updated_time" content="2018-10-30T14:08:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="【ndnSIM】Interest・DataパケットをIPのパケットに詰め込んでから元に戻す方法">
+<meta name="twitter:description" content="モチベーションInformation Centric Networking(ICN)のシミュレーションで、ルーティング周りの処理を弄ってトラフィック量の計測がしたい。一番研究が盛んなNDNをベースにして、ちゃんとInterest &amp;amp; Dataパケットは使いたいし、ndnSIM または ndn-cxx + NFD で実装したい。しかし、ndnSIMにしろNFDにしろ、ルーティング周りを弄ろう">
+  
+    <link rel="alternative" href="/atom.xml" title="wawawa.net" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+  <!--[if lt IE 9]><script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+  
+</head>
+<body>
+  <div id="container">
+    <div class="mobile-nav-panel">
+	<i class="icon-reorder icon-large"></i>
+</div>
+<header id="header">
+	<h1 class="blog-title">
+		<a href="/">wawawa.net</a>
+	</h1>
+	<nav class="nav">
+		<ul>
+			<li><a href="/">Home</a></li><li><a href="/about/">About</a></li><li><a href="/archives/">Archives</a></li>
+			<li><a id="nav-search-btn" class="nav-icon" title="Search"></a></li>
+			<li><a href="/atom.xml" id="nav-rss-link" class="nav-icon" title="RSS Feed"></a></li>
+		</ul>
+	</nav>
+	<div id="search-form-wrap">
+		<form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="https://wawawanet.github.io"></form>
+	</div>
+</header>
+    <div id="main">
+      <article id="post-ndn-in-ippacket" class="post">
+	<footer class="entry-meta-header">
+		<span class="meta-elements date">
+			<a href="/2018/10/30/ndn-in-ippacket/" class="article-date">
+  <time datetime="2018-10-30T13:30:33.000Z" itemprop="datePublished">2018-10-30</time>
+</a>
+		</span>
+		<span class="meta-elements author">wawawanet</span>
+		<div class="commentscount">
+			
+		</div>
+	</footer>
+	
+	<header class="entry-header">
+		
+  
+    <h1 class="article-title entry-title" itemprop="name">
+      【ndnSIM】Interest・DataパケットをIPのパケットに詰め込んでから元に戻す方法
+    </h1>
+  
+
+	</header>
+	<div class="entry-content">
+		
+    	<h1 id="モチベーション"><a href="#モチベーション" class="headerlink" title="モチベーション"></a>モチベーション</h1><p>Information Centric Networking(ICN)のシミュレーションで、ルーティング周りの処理を弄ってトラフィック量の計測がしたい。一番研究が盛んなNDNをベースにして、ちゃんとInterest &amp; Dataパケットは使いたいし、ndnSIM または ndn-cxx + NFD で実装したい。<br>しかし、ndnSIMにしろNFDにしろ、ルーティング周りを弄ろうとすると内部実装書き換える必要あるっぽいので、技術力のない自分にはキツい。<br>仮にアプリケーション層でやりたいことを実装して、中間地点に設置したノードにインストールしても、元々のルーティング処理が良い感じに処理してしまうのでアプリケーション層まで届けられずに転送されてしまう。<br>そこで、Interest &amp; DataパケットをIPパケットに詰め込んでソケットで送ってルーティングを静的に管理すれば、アプリケーション層で書いたコードで色々と処理出来て計測結果自体は取れるよね、みたいな話(日本語が壊滅的に下手すぎてダメ)</p>
+<h1 id="どうするのか"><a href="#どうするのか" class="headerlink" title="どうするのか"></a>どうするのか</h1><p>ndn::Interestクラス・ndn::Dataクラス双方にwireEncodeというメソッドが存在する。これはNDNパケットをTLVフォーマットで表現したndn::Block型に変換して返してくれるという優れものである。<br>ここからさらにconst uint8_t * 型に変換してくれるwireというメソッドを使えば良い。ここまで変換すれば、Packet型にPayloadとしてぶち込むことが可能になる。</p>
+<h1 id="実際のコード-Interestパケットの場合"><a href="#実際のコード-Interestパケットの場合" class="headerlink" title="実際のコード (Interestパケットの場合)"></a>実際のコード (Interestパケットの場合)</h1><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">// 適当にInterestパケットを作成する</span><br><span class="line">ndn::Interest interest(ndn::Name(&quot;/ndn.com&quot;));</span><br><span class="line">interest.setInterestLifetime(ndn::time::milliseconds(100000));</span><br><span class="line">interest.setMustBeFresh(true);</span><br><span class="line"></span><br><span class="line">// Block型に変換する</span><br><span class="line">ndn::Block block = interest.wireEncode();</span><br><span class="line"></span><br><span class="line">// Packetにぶち込む</span><br><span class="line">ns3::Packet packet(block.wire(), (uint32_t)block.size());</span><br><span class="line"></span><br><span class="line">// Packetからデータを取り出す</span><br><span class="line">uint8_t *buffer = new uint8_t[packet.GetSize()];</span><br><span class="line">packet.CopyData(buffer, packet.GetSize());</span><br><span class="line"></span><br><span class="line">// Block型に復元する</span><br><span class="line">ndn::Block block_restored(buffer, packet.GetSize ());</span><br><span class="line"></span><br><span class="line">// Interestパケットに復元する</span><br><span class="line">ndn::Interest interest_restored(block_restored);</span><br><span class="line"></span><br><span class="line">// 以下の2行は出力が同じになります</span><br><span class="line">std::cout &lt;&lt; interest &lt;&lt; std::endl;</span><br><span class="line">std::cout &lt;&lt; interest_restored &lt;&lt; std::endl;</span><br></pre></td></tr></table></figure>
+<p>ndn::DataクラスでもwireEncodeメソッドがあるので、Dataパケットでも同様に出来ます。</p>
+
+    
+	</div>
+	<footer class="entry-footer">
+		<div class="entry-meta-footer">
+			<span class="category">
+				
+			</span>
+			<span class="tags">
+				
+			</span>
+		</div>
+	</footer>
+	
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2018/08/15/ploomtech/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">
+        
+          Ploom TECHを買った
+        
+      </div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+
+
+    </div>
+    <div class="mb-search">
+  <form action="//google.com/search" method="get" accept-charset="utf-8">
+    <input type="search" name="q" results="0" placeholder="Search">
+    <input type="hidden" name="q" value="site:wawawanet.github.io">
+  </form>
+</div>
+<footer id="footer">
+	<h1 class="footer-blog-title">
+		<a href="/">wawawa.net</a>
+	</h1>
+	<span class="copyright">
+		&copy; 2018 wawawanet<br>
+		Modify from <a href="http://sanographix.github.io/tumblr/apollo/" target="_blank">Apollo</a> theme, designed by <a href="http://www.sanographix.net/" target="_blank">SANOGRAPHIX.NET</a><br>
+		Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+	</span>
+</footer>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+<link rel="stylesheet" href="/fancybox/jquery.fancybox.css" media="screen" type="text/css">
+<script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+  </div>
+</body>
+</html>
